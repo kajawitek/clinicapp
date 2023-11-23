@@ -2,6 +2,8 @@
 
 class PatientsController < ApplicationController
   def index
-    render :index, locals: { patients: Patient.all }
+    q = Patient.ransack(params[:q])
+    patients = q.result(distinct: true)
+    render :index, locals: { q: q, patients: patients }
   end
 end

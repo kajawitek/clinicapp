@@ -1,5 +1,27 @@
-<h1> Patients </h1>
+<h1>Patients</h1>
 
-<% patients.each do |patient| %>
-  <p> <%= patient.full_name %> </p>
-<% end %>
+<table class='table'>
+  <thead class="table-dark">
+  <tr>
+    <th>First name</th>
+    <th><%= sort_link(q, :last_name, 'Last name', default_order: :asc) %></th>
+    <th><%= sort_link(q, :date_of_birth, 'Date of birth', default_order: :asc) %></th>
+    <th>Gender</th>
+    <th>City</th>
+
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% patients.each do |patient| %>
+    <tr>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      <td><%= patient.date_of_birth %></td>
+      <td><%= patient.gender %></td>
+      <td><%= patient.city %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
