@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeDateFormatInPatientsTable < ActiveRecord::Migration[7.1]
   def up
     change_column :patients, :date_of_birth, :date
