@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PatientsController < ApplicationController
-
   def index
     q = Patient.ransack(params[:q])
     items_amount = 5
