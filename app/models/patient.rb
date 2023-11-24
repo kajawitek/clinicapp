@@ -5,6 +5,6 @@ class Patient < ApplicationRecord
   validates :pesel, uniqueness: true
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[last_name date_of_birth pesel]
+    %w[last_name date_of_birth gender]
   end
 end

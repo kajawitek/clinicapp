@@ -1,0 +1,10 @@
+<%= search_form_for q do |f| %>
+
+  <%= f.label :last_name_cont %>
+  <%= f.search_field :last_name_cont %>
+
+  <%= f.label :gender_eq %>
+  <%= f.select :gender_eq, options_for_select(Patient.pluck(:gender).uniq) %>
+
+  <%= f.submit "Search!" %>
+<% end %>
