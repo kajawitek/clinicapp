@@ -27,3 +27,7 @@
   <% end %>
   </tbody>
 </table>
+
+<% if Patient.all.count > items_amount %>
+  <%== pagy_nav(pagy) %>
+<% end %>
