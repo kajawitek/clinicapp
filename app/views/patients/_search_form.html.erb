@@ -4,7 +4,7 @@
   <%= f.search_field :last_name_cont %>
 
   <%= f.label :gender_eq %>
-  <%= f.select :gender_eq, options_for_select(Patient.genders) %>
+  <%= f.select :gender_eq, options_for_select(Patient.genders), include_blank: true%>
 
   <%= f.submit "Search!" %>
 <% end %>

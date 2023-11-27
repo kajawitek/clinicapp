@@ -5,9 +5,10 @@
 <table class='table'>
   <thead class="table-dark">
   <tr>
-    <th>First name</th>
-    <th><%= sort_link(q, :last_name, 'Last name', default_order: :asc, class: "link-light") %></th>
-    <th><%= sort_link(q, :date_of_birth, 'Date of birth', default_order: :asc, class: "link-light") %></th>
+    <th>ID</th>
+    <th>First Name</th>
+    <th><%= sort_link(q, :last_name, 'Last Name', default_order: :asc, class: "link-light") %></th>
+    <th><%= sort_link(q, :date_of_birth, 'Date Of Birth', default_order: :asc, class: "link-light") %></th>
     <th>Gender</th>
     <th>City</th>
 
@@ -18,6 +19,7 @@
   <tbody>
   <% patients.each do |patient| %>
     <tr>
+      <td><%= patient.id %></td>
       <td><%= patient.first_name %></td>
       <td><%= patient.last_name %></td>
       <td><%= patient.date_of_birth %></td>

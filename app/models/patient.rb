@@ -10,6 +10,6 @@ class Patient < ApplicationRecord
   }
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[last_name date_of_birth gender]
+    %w[last_name date_of_birth gender created_at]
   end
 end
