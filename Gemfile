@@ -33,9 +33,13 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.2'
+  gem 'rspec-rails', '~> 6.1'
   gem 'rubocop-capybara'
   gem 'rubocop-factory_bot'
   gem 'rubocop-rspec'
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
+  gem 'selenium-webdriver', '~> 4.15'
 end
 
 group :development do
