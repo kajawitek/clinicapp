@@ -5,11 +5,14 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 gem 'cssbundling-rails'
+gem 'faker'
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'pagy'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.1'
+gem 'ransack'
 gem 'redis', '>= 4.0.1'
 gem 'rubocop-rails'
 gem 'sprockets-rails'
@@ -29,10 +32,14 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
   gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.2'
+  gem 'rspec-rails', '~> 6.1'
   gem 'rubocop-capybara'
   gem 'rubocop-factory_bot'
   gem 'rubocop-rspec'
+  gem 'selenium-webdriver', '~> 4.15'
 end
 
 group :development do

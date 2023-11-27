@@ -1,0 +1,10 @@
+<%= search_form_for q do |f| %>
+
+  <%= f.label :last_name_cont, 'Last name' %>
+  <%= f.search_field :last_name_cont %>
+
+  <%= f.label :gender_eq, 'Gender' %>
+  <%= f.select :gender_eq, options_for_select(Patient.genders), include_blank: true %>
+
+  <%= f.submit 'Search!' %>
+<% end %>
