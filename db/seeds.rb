@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
-10.times do |number|
-  Patient.create!(first_name: 'First_Name', last_name: "Last Name#{number}", pesel: "1234567890#{number}",
-                  gender: 'male', date_of_birth: '1990-01-01', city: 'City')
+100.times do
+  Patient.create!(first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
+                  pesel: Faker::Number.number(digits: 11),
+                  gender: Patient.genders.values.sample,
+                  date_of_birth: Faker::Date.between(from: 150.years.ago, to: Time.zone.today),
+                  city: Faker::Address.city)
+
+  Rails.logger.debug do
+    "## Created patient #{Patient.last.first_name} #{Patient.last.last_name} #{Patient.last.gender}"
+  end
 end
