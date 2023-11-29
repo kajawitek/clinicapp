@@ -8,11 +8,6 @@ RSpec.describe Appointment do
     expect(appointment).to be_valid
   end
 
-  it 'is not valid without a date_and_time' do
-    appointment = build(:appointment, date_and_time: nil)
-    expect(appointment).not_to be_valid
-  end
-
   it 'is not valid without a price' do
     appointment = build(:appointment, price: nil)
     expect(appointment).not_to be_valid
@@ -23,8 +18,8 @@ RSpec.describe Appointment do
     expect(appointment).not_to be_valid
   end
 
-  it 'is not valid without a doctor' do
-    appointment = build(:appointment, doctor: nil)
+  it 'is not valid without an appointment_slot' do
+    appointment = build(:appointment, appointment_slot: nil)
     expect(appointment).not_to be_valid
   end
 end

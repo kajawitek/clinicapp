@@ -2,7 +2,7 @@
 
 class Appointment < ApplicationRecord
   belongs_to :patient
-  belongs_to :doctor
+  belongs_to :appointment_slot
 
-  validates :date_and_time, :price, presence: true
+  validates :price, presence: true
 end
