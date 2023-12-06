@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 100.times do
-  Patient.create!(first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name,
-                  pesel: Faker::Number.number(digits: 11),
-                  gender: Patient.genders.values.sample,
-                  date_of_birth: Faker::Date.between(from: 150.years.ago, to: Time.zone.today),
-                  city: Faker::Address.city)
+  patient = FactoryBot.create(:patient)
+  Rails.logger.debug { "## Created Patient: #{patient.first_name} #{patient.last_name}" }
+end
 
-  Rails.logger.debug do
-    "## Created patient #{Patient.last.first_name} #{Patient.last.last_name} #{Patient.last.gender}"
-  end
+20.times do
+  doctor = FactoryBot.create(:doctor)
+  Rails.logger.debug { "## Created Doctor: #{doctor.first_name} #{doctor.last_name}" }
 end
