@@ -1,0 +1,30 @@
+<h1>Register appointment</h1>
+<h2>Choose slot</h2>
+
+<%= render 'appointment_slots/search_form', q: q, doctors: doctors %>
+
+<table class='table'>
+  <thead class='table-dark'>
+  <tr>
+    <th>ID</th>
+    <th>Doctor</th>
+    <th>Date and time</th>
+
+    <th colspan='3'></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% appointment_slots.each do |slot| %>
+    <tr>
+      <td><%= slot.id %></td>
+      <td><%= slot.doctor.full_name %></td>
+      <td><%= slot.date_and_time %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% if AppointmentSlot.all.count > items_amount %>
+  <%== pagy_nav(pagy) %>
+<% end %>
