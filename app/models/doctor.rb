@@ -8,4 +8,8 @@ class Doctor < ApplicationRecord
   def full_name
     [first_name, last_name].join(' ')
   end
+
+  def self.doctors_for_select
+    joins(:appointment_slots).distinct.map { |doctor| [doctor.full_name, doctor.id] }
+  end
 end

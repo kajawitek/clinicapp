@@ -7,16 +7,12 @@ class AppointmentSlotsController < ApplicationController
     pagy, appointment_slots = pagy(q.result(distinct: true).includes(:doctor), items: items_amount)
 
     render :index, locals: { q: q, appointment_slots: appointment_slots, pagy: pagy, items_amount: items_amount,
-                             doctors: doctors, patient: patient }
+                             doctors: Doctor.doctors_for_select, patient: patient }
   end
 
   private
 
-  def doctors
-    Doctor.joins(:appointment_slots).distinct.map { |doctor| [doctor.full_name, doctor.id] }
-  end
-
   def patient
-    Patient.find(params[:patient]) if params[:patient]
+    @patient ||= Patient.find(params[:patient]) if params[:patient]
   end
 end
