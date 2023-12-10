@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-100.times do
-  patient = FactoryBot.create(:patient)
-  Rails.logger.debug { "## Created Patient: #{patient.first_name} #{patient.last_name}" }
+patients = FactoryBot.create_list(:patient, 100)
+doctors = FactoryBot.create_list(:doctor, 20)
+
+doctors.each do |doctor|
+  FactoryBot.create_list(:appointment_slot, 20, doctor: doctor)
 end
 
-20.times do
-  doctor = FactoryBot.create(:doctor)
-  Rails.logger.debug { "## Created Doctor: #{doctor.first_name} #{doctor.last_name}" }
+patients.each do |patient|
+  FactoryBot.create_list(:appointment, 20, patient: patient, appointment_slot: AppointmentSlot.all.sample)
 end
