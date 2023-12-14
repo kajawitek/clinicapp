@@ -18,6 +18,11 @@ RSpec.describe AppointmentSlot do
     expect(appointment_slot).not_to be_valid
   end
 
+  it 'is not valid without a available' do
+    appointment_slot = build(:appointment_slot, available: nil)
+    expect(appointment_slot).not_to be_valid
+  end
+
   it 'is created with true value for available' do
     appointment_slot = create(:appointment_slot)
     expect(appointment_slot.available).to be(true)

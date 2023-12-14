@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_122412) do
     t.bigint "doctor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "available", default: true
+    t.boolean "available", default: true, null: false
     t.index ["doctor_id"], name: "index_appointment_slots_on_doctor_id"
   end
 
