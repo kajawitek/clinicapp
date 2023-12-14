@@ -17,4 +17,9 @@ RSpec.describe AppointmentSlot do
     appointment_slot = build(:appointment_slot, doctor: nil)
     expect(appointment_slot).not_to be_valid
   end
+
+  it 'is created with true value for available' do
+    appointment_slot = create(:appointment_slot)
+    expect(appointment_slot.available).to be(true)
+  end
 end

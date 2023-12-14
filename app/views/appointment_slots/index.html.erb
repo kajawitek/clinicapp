@@ -15,7 +15,7 @@
 
   <tbody>
 
-  <% appointment_slots.each do |slot| %>
+  <% avaiable_appointment_slots.each do |slot| %>
     <tr>
       <td><%= slot.id %></td>
       <td><%= slot.doctor.full_name %></td>
@@ -26,6 +26,6 @@
   </tbody>
 </table>
 
-<% if AppointmentSlot.all.count > items_amount %>
+<% if avaiable_appointment_slots.count > items_amount %>
   <%== pagy_nav(pagy) %>
 <% end %>

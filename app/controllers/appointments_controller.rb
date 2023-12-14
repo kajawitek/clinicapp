@@ -13,6 +13,7 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.new(appointment_params)
 
     if appointment.save
+      appointment.appointment_slot.update(available: false)
       redirect_to patients_path, notice: 'Appointment created successfully!'
     else
       patient = Patient.find(appointment_params[:patient_id])
