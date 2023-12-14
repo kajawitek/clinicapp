@@ -2,6 +2,7 @@
 
   <%= f.label :doctor_id_eq, 'Doctor' %>
   <%= f.select :doctor_id_eq, options_for_select(doctors), include_blank: true %>
+  <%= hidden_field_tag :patient, patient.id %>
 
   <%= f.submit 'Search!' %>
 <% end %>
