@@ -16,12 +16,16 @@ RSpec.describe 'Booking an appointment' do
     expect(page).to have_content(appointment_slot.date_and_time)
 
     click_button 'Create Appointment'
-    expect(page).to have_content('Appointment not created!')
+    expect(page).to have_content('Appointment not booked!')
     expect(page).to have_content("Pricecan't be blank")
 
     fill_in 'appointment_price', with: 12
     click_button 'Create Appointment'
-    expect(page).to have_content('Appointment created successfully!')
+    expect(page).to have_content('Appointment booked successfully!')
+
+    click_link 'Patients'
+    click_link 'Add appointment'
+    expect(page).not_to have_link('Book appointment')
   end
 
   it 'books appointment when valid, and return error notice when invalid with filtering a patient and a doctor' do
@@ -47,11 +51,11 @@ RSpec.describe 'Booking an appointment' do
     expect(page).to have_content(appointment_slot.date_and_time)
 
     click_button 'Create Appointment'
-    expect(page).to have_content('Appointment not created!')
+    expect(page).to have_content('Appointment not booked!')
     expect(page).to have_content("Pricecan't be blank")
 
     fill_in 'appointment_price', with: 12
     click_button 'Create Appointment'
-    expect(page).to have_content('Appointment created successfully!')
+    expect(page).to have_content('Appointment booked successfully!')
   end
 end

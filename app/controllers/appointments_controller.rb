@@ -11,16 +11,23 @@ class AppointmentsController < ApplicationController
 
   def create
     appointment = Appointment.new(appointment_params)
+    notice_unavailable_slot = 'Appointment slot is unavailable. Please select another from the list below'
 
-    if appointment.save
-      appointment.appointment_slot.update(available: false)
-      redirect_to patients_path, notice: 'Appointment created successfully!'
-    else
-      patient = Patient.find(appointment_params[:patient_id])
-      slot = AppointmentSlot.find(appointment_params[:appointment_slot_id])
-      flash.now[:alert] = 'Appointment not created!'
+    redirect_to appointment_slots_path, notice: notice_unavailable_slot unless appointment.appointment_slot.available?
 
-      render :new, locals: { appointment: appointment, patient: patient, slot: slot }
+    begin
+      ActiveRecord::Base.transaction do
+        appointment.save!
+        appointment.appointment_slot.update!(available: false)
+
+        redirect_to patients_path, notice: 'Appointment booked successfully!'
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      patient = appointment.patient
+      slot = appointment.appointment_slot
+      flash.now[:alert] = 'Appointment not booked!'
+
+      render :new, notice: e.message, locals: { appointment: appointment, patient: patient, slot: slot }
     end
   end
 
