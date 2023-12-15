@@ -15,12 +15,12 @@
 
   <tbody>
 
-  <% available_appointment_slots.each do |slot| %>
+  <% available_appointment_slots.each do |appointment_slot| %>
     <tr>
-      <td><%= slot.id %></td>
-      <td><%= slot.doctor.full_name %></td>
-      <td><%= slot.date_and_time %></td>
-      <td><%= link_to 'Book appointment', new_appointment_path(patient: patient, slot: slot) %></td>
+      <td><%= appointment_slot.id %></td>
+      <td><%= appointment_slot.doctor.full_name %></td>
+      <td><%= appointment_slot.date_and_time %></td>
+      <td><%= link_to 'Book appointment', new_appointment_path(patient: patient, appointment_slot: appointment_slot) %></td>
     </tr>
   <% end %>
   </tbody>

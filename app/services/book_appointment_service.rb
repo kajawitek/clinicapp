@@ -3,9 +3,9 @@
 class BookAppointmentService
   attr_reader :errors
 
-  def initialize(appointment:, slot:)
+  def initialize(appointment:, appointment_slot:)
     @appointment = appointment
-    @slot = slot
+    @appointment_slot = appointment_slot
     @errors = []
   end
 
@@ -22,10 +22,10 @@ class BookAppointmentService
 
   private
 
-  attr_reader :appointment, :slot
+  attr_reader :appointment, :appointment_slot
 
   def appointment_slot_is_available?
-    slot.available?
+    appointment_slot.available?
   end
 
   def book_appointment
