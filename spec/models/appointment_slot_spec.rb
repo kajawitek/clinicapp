@@ -27,4 +27,12 @@ RSpec.describe AppointmentSlot do
     appointment_slot = create(:appointment_slot)
     expect(appointment_slot.available).to be(true)
   end
+
+  it 'ensures the uniqueness of date_and_time scoped to doctor_id' do
+    date_and_time = Time.zone.now
+    doctor = create(:doctor)
+    create(:appointment_slot, doctor: doctor, date_and_time: date_and_time)
+    appointment_slot = build(:appointment_slot, doctor: doctor, date_and_time: date_and_time)
+    expect(appointment_slot).not_to be_valid
+  end
 end
