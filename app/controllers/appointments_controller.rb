@@ -30,6 +30,7 @@ class AppointmentsController < ApplicationController
   def handle_error(appointment, errors)
     flash.now[:alert] = 'Appointment not booked!'
     render :new, notice: errors.join(', '),
-                 locals: { appointment: appointment, patient: appointment.patient, appointment_slot: appointment.appointment_slot }
+                 locals: { appointment: appointment, patient: appointment.patient,
+                           appointment_slot: appointment.appointment_slot }
   end
 end
