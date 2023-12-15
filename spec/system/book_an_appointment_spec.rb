@@ -39,11 +39,11 @@ RSpec.describe 'Booking an appointment' do
     click_button 'Search'
 
     click_link 'Add appointment'
-    select 'Adam Noe', from: 'q[doctor_id_eq]'
+    select 'Noe Adam', from: 'q[doctor_id_eq]'
     click_button 'Search'
     within('#appointment-slots-table') do
-      expect(page).to have_content('Adam Noe')
-      expect(page).not_to have_content('Donald Draper')
+      expect(page).to have_content('Noe Adam')
+      expect(page).not_to have_content('Draper Donald')
     end
 
     click_link 'Book appointment'
