@@ -10,6 +10,7 @@ RSpec.describe 'Viewing patient list' do
     create(:patient, last_name: 'Patient no 11')
 
     visit root_path
+    click_link 'Patients'
 
     expect(Patient.count).to eq(11)
     expect(page).to have_content('Patient no 1')
@@ -27,6 +28,7 @@ RSpec.describe 'Viewing patient list' do
     create(:patient, last_name: 'Zpatient', date_of_birth: '1990-01-01')
 
     visit root_path
+    click_link 'Patients'
 
     click_link 'Last Name'
 
@@ -59,6 +61,7 @@ RSpec.describe 'Viewing patient list' do
     create(:patient, last_name: 'Zpatient', gender: 'female')
 
     visit root_path
+    click_link 'Patients'
 
     fill_in 'q_last_name_cont', with: 'patient'
     click_button 'Search'

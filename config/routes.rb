@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'patients#index'
+  root 'home#index'
 
   resources :patients, only: %i[index]
   resources :appointments, only: %i[new create]
