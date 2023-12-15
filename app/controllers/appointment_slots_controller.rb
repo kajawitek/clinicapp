@@ -7,8 +7,8 @@ class AppointmentSlotsController < ApplicationController
     pagy, avaiable_appointment_slots = pagy(q.result(distinct: true).where(available: true).includes(:doctor),
                                             items: items_amount)
 
-    render :index, locals: { q: q, avaiable_appointment_slots: avaiable_appointment_slots, pagy: pagy, items_amount: items_amount,
-                             doctors: Doctor.doctors_for_select, patient: patient }
+    render :index, locals: { q: q, avaiable_appointment_slots: avaiable_appointment_slots, pagy: pagy,
+                             items_amount: items_amount, doctors: Doctor.doctors_for_select, patient: patient }
   end
 
   private
