@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-100.times do
-  Patient.create!(first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name,
-                  pesel: Faker::Number.number(digits: 11),
-                  gender: Patient.genders.values.sample,
-                  date_of_birth: Faker::Date.between(from: 150.years.ago, to: Time.zone.today),
-                  city: Faker::Address.city)
+patients = FactoryBot.create_list(:patient, 100)
+doctors = FactoryBot.create_list(:doctor, 20)
 
-  Rails.logger.debug do
-    "## Created patient #{Patient.last.first_name} #{Patient.last.last_name} #{Patient.last.gender}"
-  end
+doctors.each do |doctor|
+  FactoryBot.create_list(:appointment_slot, 20, doctor: doctor)
+end
+
+patients.each do |patient|
+  FactoryBot.create_list(:appointment, 20, patient: patient, appointment_slot: AppointmentSlot.all.sample)
 end

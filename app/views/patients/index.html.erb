@@ -25,6 +25,7 @@
       <td><%= patient.date_of_birth %></td>
       <td><%= patient.gender %></td>
       <td><%= patient.city %></td>
+      <td><%= link_to 'Add appointment', appointment_slots_path(patient: patient) %></td>
     </tr>
   <% end %>
   </tbody>

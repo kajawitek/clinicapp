@@ -1,0 +1,22 @@
+<%= simple_form_for appointment do |f| %>
+  <div class="form-group">
+    <%= f.input :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Date and Time:" %>
+    <%= appointment_slot.date_and_time %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Doctor's Full Name" %>
+    <%= appointment_slot.doctor.full_name %>
+  </div>
+
+  <%= f.hidden_field :patient_id, value: patient.id %>
+  <%= f.hidden_field :appointment_slot_id, value: appointment_slot.id %>
+
+  <div class="form-group">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
